@@ -4,6 +4,7 @@ import {
   useSharedValue,
   withDelay,
   withRepeat,
+  withSequence,
   withTiming,
 } from 'react-native-reanimated';
 
@@ -40,11 +41,11 @@ const ProgressIndicator: FC<ProgressIndicatorProps> = ({
   activeColors,
   backgroundColor,
 }) => {
-  const animatedOpacity = useSharedValue(1);
-  const opacity = useValue(1);
+  const animatedOpacity = useSharedValue(0);
+  const opacity = useValue(0);
 
   const transform = useComputedValue(() => {
-    const rad = interpolate(index, [0, 8], [0, 2 * Math.PI]);
+    const rad = -Math.PI / 2 + interpolate(index, [0, 8], [0, 2 * Math.PI]);
 
     return [{ rotate: rad }];
   }, [index]);
@@ -82,11 +83,16 @@ const ProgressIndicator: FC<ProgressIndicatorProps> = ({
   useEffect(() => {
     animatedOpacity.value = withDelay(
       index * duration,
-      withRepeat(
-        withTiming(0, {
-          duration: totalItems * duration,
+      withSequence(
+        withTiming(1, {
+          duration: 0,
         }),
-        -1,
+        withRepeat(
+          withTiming(0, {
+            duration: totalItems * duration,
+          }),
+          -1,
+        ),
       ),
     );
   }, [index, animatedOpacity, totalItems, duration]);

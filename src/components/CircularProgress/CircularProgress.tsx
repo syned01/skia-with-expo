@@ -8,7 +8,7 @@ import ProgressIndicator from './ProgressIndicator';
 interface CircularProgressProps {}
 
 const COUNT = 8;
-const DURATION = 80;
+const DURATION = 90;
 const INDICATOR_HEIGHT = 8;
 export const RADIUS = 35;
 const INNER_RADIUS = 15;
