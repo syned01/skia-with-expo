@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/native-stack';
 
 import { HomeScreen } from '../screens/HomeScreen';
-import { LoadingLogos } from '../screens/LoadingLogos';
+import { LoadingIconsScreen } from '../screens/LoadingIconsScreen';
 import { NavigationKeys } from './keys';
 import { RootStackParamList } from './types';
 
@@ -24,8 +24,8 @@ const RootNavigator: FC = () => {
     <Stack.Navigator screenOptions={defaultScreenOptions}>
       <Stack.Screen name={NavigationKeys.Home} component={HomeScreen} />
       <Stack.Screen
-        name={NavigationKeys.LoadingLogos}
-        component={LoadingLogos}
+        name={NavigationKeys.LoadingIcons}
+        component={LoadingIconsScreen}
       />
     </Stack.Navigator>
   );

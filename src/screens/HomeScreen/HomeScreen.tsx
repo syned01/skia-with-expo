@@ -15,12 +15,12 @@ const Home: FC<HomeProps> = () => {
   const { navigate } = useNavigation<HomeStackProps['navigation']>();
 
   const goToLoadingLogos = useCallback(() => {
-    navigate(NavigationKeys.LoadingLogos);
+    navigate(NavigationKeys.LoadingIcons);
   }, [navigate]);
 
   return (
     <View style={styles.container}>
-      <PageButton emoji="👓" title="Loading logos" onPress={goToLoadingLogos} />
+      <PageButton emoji="👓" title="Loading Icons" onPress={goToLoadingLogos} />
     </View>
   );
 };
